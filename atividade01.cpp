@@ -198,6 +198,22 @@ public:
                 }
     }
 
+    static void excluirMedico(vector<Medico>&medicos){
+            string aux_crm;
+
+         cout << "Digite o crm do medico que deseja ecluir" << endl;
+                std::cin.ignore();
+                getline(std::cin, aux_crm);
+
+                for(int i = 0; i < medicos.size(); i++){
+                    if(aux_crm == medicos[i].getCrm()){
+                        cout << "Excluindo Medico: " << medicos[i].getNome() << endl;
+                        medicos.erase(medicos.begin() + i);
+                    }
+                }
+    }
+
+
     static void adcionarMedicos(vector<Medico>&medicos){
         string aux_nome, aux_especialidade, aux_crm;
         cout << "Digite o nome do Medico" << endl;
@@ -212,6 +228,27 @@ public:
 
                 Medico novoMedico(aux_crm, aux_nome, aux_especialidade);
                 medicos.push_back(novoMedico);
+    }
+
+    static void buscarApartirMedicos(vector<Medico>&medicos){
+        string aux_crm;
+        bool aux_flag = false;
+
+        cout << "Insira o crm para buscar a pessoa" << endl;
+        std::cin.ignore();
+        getline(std::cin, aux_crm);
+
+        for(int i = 0;i < medicos.size(); i++){
+            if(medicos[i].getCrm() == aux_crm){
+                cout << "Medico: " << medicos[i].getNome() << endl;
+                    cout << "Especialidade: " << medicos[i].getEspecialidade() << endl;
+                    cout << "CRM: " << medicos[i].getCrm() << endl;
+                    cout << " " << endl;
+                    aux_flag = true;
+            }
+        }if(aux_flag == false){
+        cout << "cpf nao corresponde!" << endl;
+        }
     }
 
     
@@ -284,7 +321,7 @@ int main() {
               Medico::adcionarMedicos(medicos);
             }
             if(op == 2){
-              
+              Medico::excluirMedico(medicos);
             }
             if(op == 3){
               
@@ -294,7 +331,7 @@ int main() {
                Medico::listarMedicos(medicos);
             }
             if(op == 5){
-                
+                Medico::buscarApartirMedicos(medicos);
             }
         } while(op != 0);
     }
