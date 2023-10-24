@@ -108,6 +108,27 @@ public:
             pacientes.push_back(novoPaciente);
     }
 
+    static void buscarApartirPacientes(vector<Paciente>&pacientes){
+        string aux_cpf;
+        bool aux_flag = false;
+
+        cout << "Insira o cpf para buscar a pessoa" << endl;
+        std::cin.ignore();
+        getline(std::cin, aux_cpf);
+
+        for(int i = 0;i < pacientes.size(); i++){
+            if(pacientes[i].getCpf() == aux_cpf){
+               cout << "Os dados do Paciente " << endl;
+                cout << "Paciente: " << pacientes[i].getNome()<< endl;
+                cout << "Cpf: " << pacientes[i].getCpf() << endl;
+                cout << "Data Nascimento: " << pacientes[i].getDt_nascimento() << endl;
+                aux_flag = true;
+            }
+        }if(aux_flag == false){
+        cout << "cpf nao corresponde!" << endl;
+        }
+    }
+
   
 };
 
@@ -146,7 +167,7 @@ int main() {
         }
 
         if(op == 5){
-           
+           Paciente::buscarApartirPacientes(pacientes);
         }
  
 
