@@ -88,6 +88,28 @@ public:
             }
     }
 
+     static void excluirPaciente(vector<Paciente> &pacientes){
+         
+         string aux_cpf;
+         bool pacienteEncontrado = false;
+
+            cout << "Informe o cpf do paciente que deseja Excluir...";
+            std::cin.ignore();
+            getline(std::cin, aux_cpf);
+
+            for (int i = 0; i < pacientes.size(); i++) {
+                if (aux_cpf == pacientes[i].getCpf()) {
+                    pacientes.erase(pacientes.begin() + i);
+                    cout << "Paciente removido com sucesso" << endl;
+                    pacienteEncontrado = true;
+                    break;
+                }
+            }
+            if (!pacienteEncontrado) {
+                cout << "Paciente com o cpf:  " << aux_cpf << "  Nao encontrado!" << endl;
+            }
+    }
+
 
     
 
@@ -154,10 +176,9 @@ int main() {
         }
 
         if (op == 2) {
-           
+           Paciente::excluirPaciente(pacientes);
         }
     
-        
         if (op == 3) {
           Paciente::editarPaciente(pacientes);
         }
