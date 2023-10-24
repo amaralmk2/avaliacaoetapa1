@@ -157,9 +157,17 @@ public:
 
 int main() {
     vector<Paciente> pacientes;
-    int op;
+    int op, opcao;
   
-    
+      do{
+    cout << "-->Bem vindo<--" << endl;
+    cout << "-->Ao CRM Medico<--" << endl;
+    cout << "-->Digite 1 para acessar o modulo de pacientes<--" << endl;
+    cout << "-->Digite 2 para acessar o modulo de medicos<--" << endl;
+    cout << "-->Digite 0 para sair<--" << endl;
+    std::cin >> opcao;
+  
+    if(opcao == 1){
         
     do{
         cout << "---------Menu--------" << endl;
@@ -194,4 +202,37 @@ int main() {
 
 
     }while(op != 0);
+}
+
+ if(opcao == 2){
+        do {
+            cout << "---------Menu--------" << endl;
+            cout << "1. Incluir Medico" << endl;
+            cout << "2. Excluir Medico" << endl;
+            cout << "3. Alterar dados Medico" << endl;
+            cout << "4. Listar Medicos" << endl;
+            cout << "5. Buscar medico especifico" << endl;
+            cout << "0. Sair" << endl;
+            std::cin >> op;
+
+            if(op == 1){
+              
+            }
+            if(op == 2){
+              
+            }
+            if(op == 3){
+              
+            }
+
+            if(op == 4){
+               
+            }
+            if(op == 5){
+                
+            }
+        } while(op != 0);
+    }
+
+    }while(opcao != 0);
 }
