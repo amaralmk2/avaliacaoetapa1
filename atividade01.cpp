@@ -154,9 +154,74 @@ public:
   
 };
 
+class Medico {
+    string crm;
+    string nome;
+    string especialidade;
+public:
+
+    Medico(string _crm, string _nome, string _especialidade) : crm(_crm), nome(_nome), especialidade(_especialidade) {}
+
+    void setNome(string _nome){
+        nome = _nome;
+    };
+
+    string getNome(){
+        return nome;
+    }
+
+    void setCrm(string _crm){
+        crm = _crm;
+    }
+
+    string getCrm(){
+        return crm;
+    }
+
+    void setEspecialidade(string _especialidade){
+        especialidade = _especialidade;
+    }
+
+    string getEspecialidade(){
+        return especialidade;
+    }
+
+
+    static void listarMedicos(vector<Medico>&medicos){
+         cout << "Lista dos medicos: " << endl;
+
+                for(int i = 0; i < medicos.size(); i++){
+                    cout << "Medico: " << medicos[i].getNome() << endl;
+                    cout << "Especialidade: " << medicos[i].getEspecialidade() << endl;
+                    cout << "CRM: " << medicos[i].getCrm() << endl;
+                    cout << " " << endl;
+                }
+    }
+
+    static void adcionarMedicos(vector<Medico>&medicos){
+        string aux_nome, aux_especialidade, aux_crm;
+        cout << "Digite o nome do Medico" << endl;
+                std::cin.ignore();
+                getline(std::cin, aux_nome);
+
+                cout << "Digite a especialidade: " << endl;
+                getline(std::cin, aux_especialidade);
+
+                cout << "Digite o CRM do profissional: " << endl;
+                getline(std::cin, aux_crm);
+
+                Medico novoMedico(aux_crm, aux_nome, aux_especialidade);
+                medicos.push_back(novoMedico);
+    }
+
+    
+
+};
+
 
 int main() {
     vector<Paciente> pacientes;
+    vector<Medico> medicos;
     int op, opcao;
   
       do{
@@ -216,7 +281,7 @@ int main() {
             std::cin >> op;
 
             if(op == 1){
-              
+              Medico::adcionarMedicos(medicos);
             }
             if(op == 2){
               
@@ -226,7 +291,7 @@ int main() {
             }
 
             if(op == 4){
-               
+               Medico::listarMedicos(medicos);
             }
             if(op == 5){
                 
