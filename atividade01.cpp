@@ -251,6 +251,41 @@ public:
         }
     }
 
+    static void editarDadosMedico(vector<Medico>&medicos){
+                string aux_crm, aux_especialidade, aux_nome;
+        
+                int valida;
+                cout << "Selecione o medico que deseja alterar a partir do CRM";
+                std::cin.ignore();
+                getline(std::cin, aux_crm);
+
+                for(int i = 0; i < medicos.size(); i++){
+                    if(aux_crm == medicos[i].getCrm()){
+                        cout << medicos[i].getNome()<< endl;
+                        cout << medicos[i].getCrm() << endl;
+                        cout << medicos[i].getEspecialidade() << endl;
+
+                        cout << "Deseja alterar o nome do Medico?  (1-SIM/2-NAO)";
+                        std::cin >> valida;
+                        if(valida == 1){
+                            cout << "Digite o novo nome do medico: " << endl;
+                            std::cin.ignore();
+                            getline(std::cin, aux_nome);
+                            medicos[i].setNome(aux_nome);
+                        }
+
+                        cout << "Deseja alterar a especialidade do Medico? (1-SIM/2-NAO)";
+                        std::cin >> valida;
+                        if(valida == 1){
+                            cout << "Digite a nova especialidade do medico: " << endl;
+                            std::cin.ignore();
+                            getline(std::cin, aux_especialidade);
+                            medicos[i].setEspecialidade(aux_especialidade);
+                        }
+                    }
+                }
+    }
+
     
 
 };
@@ -324,7 +359,7 @@ int main() {
               Medico::excluirMedico(medicos);
             }
             if(op == 3){
-              
+              Medico::editarDadosMedico(medicos);
             }
 
             if(op == 4){
